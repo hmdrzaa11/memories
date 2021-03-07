@@ -8,6 +8,7 @@ async function connectToDB() {
       useNewUrlParser: true,
       useFindAndModify: false,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     });
     console.log("DB in the House!");
   } catch (error) {
