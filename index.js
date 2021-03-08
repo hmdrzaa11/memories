@@ -4,6 +4,7 @@ let morgan = require("morgan");
 let errorHandler = require("./controllers/errors");
 let cookieParser = require("cookie-parser");
 let usersRouter = require("./routes/users");
+let memoriesRouter = require("./routes/memories");
 const AppError = require("./utils/AppError");
 
 let app = express();
@@ -15,14 +16,17 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+//static
+app.use(express.static(`${__dirname}/public`));
+
 //body parser
 app.use(express.json());
-
 //coolie-parser
 app.use(cookieParser());
 
 //api
 app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/memories", memoriesRouter);
 
 //404 routes
 app.all("*", (req, res, next) => {

@@ -47,8 +47,8 @@ let userSchema = new Schema({
     enum: {
       values: ["user", "admin"],
       message: ['role can only be "user" or "admin"'],
-      default: "user",
     },
+    default: "user",
   },
   passwordResetToken: String,
   passwordChangedAt: Date,
