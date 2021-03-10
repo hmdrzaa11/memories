@@ -8,6 +8,7 @@ let {
   deleteMemory,
 } = require("../controllers/memories");
 const { isAuthenticated } = require("../controllers/users");
+let reviewRouter = require("./reviews");
 
 router
   .route("/")
@@ -18,5 +19,8 @@ router
   .route("/:memId")
   .patch(isAuthenticated, uploader.single("image"), resizeImage, updateMemory)
   .delete(isAuthenticated, deleteMemory);
+
+//Nested Routes
+router.use("/:memId/reviews", reviewRouter);
 
 module.exports = router;

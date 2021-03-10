@@ -63,3 +63,11 @@ exports.isAuthenticated = catchAsyncErrors(async (req, res, next) => {
   req.user = user;
   next();
 });
+
+exports.logout = (req, res, next) => {
+  res.cookie("jwtToken", "logout babe", {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+  res.send();
+};
