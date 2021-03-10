@@ -7,4 +7,9 @@ router
   .post(isAuthenticated, reviewController.createReview)
   .get(reviewController.getAllReviews);
 
+router
+  .route("/:reviewId")
+  .patch(isAuthenticated, reviewController.updateReview)
+  .delete(isAuthenticated, reviewController.deleteAReview);
+
 module.exports = router;
