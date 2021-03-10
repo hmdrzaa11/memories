@@ -21,6 +21,11 @@ let memorySchema = new Schema({
     type: String,
     default: "default.jpg",
   },
+  ratingsAvg: {
+    type: Number,
+    min: [0, "ratings can not be lower than 0"],
+    default: 4.5,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

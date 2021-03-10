@@ -5,6 +5,7 @@ let errorHandler = require("./controllers/errors");
 let cookieParser = require("cookie-parser");
 let usersRouter = require("./routes/users");
 let memoriesRouter = require("./routes/memories");
+let reviewsRouter = require("./routes/reviews");
 const AppError = require("./utils/AppError");
 
 let app = express();
@@ -27,6 +28,7 @@ app.use(cookieParser());
 //api
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/memories", memoriesRouter);
+app.use("/api/v1/reviews", reviewsRouter);
 
 //404 routes
 app.all("*", (req, res, next) => {
