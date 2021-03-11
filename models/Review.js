@@ -49,7 +49,6 @@ reviewSchema.statics.calculateRatingsAverage = async function (memId) {
   let ratings = stats[0] ? stats[0].ratingsAverage : 4.5;
   await Memory.findOneAndUpdate({ _id: memId }, { ratingsAvg: ratings });
 };
-
 reviewSchema.post("save", async function () {
   let doc = this;
   await doc.constructor.calculateRatingsAverage(doc.memory);

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"yarn run client\" \"yarn run server\"",
     "start": "node server.js"
   },
   "keywords": [],
@@ -22,6 +24,7 @@
     "validator": "^13.5.2"
   },
   "devDependencies": {
+    "concurrently": "^6.0.0",
     "morgan": "^1.10.0"
   }
 }
