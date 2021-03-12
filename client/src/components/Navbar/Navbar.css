@@ -1,0 +1,44 @@
+.Navbar {
+  height: 8rem;
+  background-color: var(--color-violet);
+  box-shadow: var(--light-shadow);
+  display: flex;
+  padding: 2rem;
+}
+
+.Navbar-left {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.Navbar-lef__logo-wrapper {
+  width: 4rem;
+  margin-right: 1rem;
+}
+
+.Navbar-left__logo {
+  width: 100%;
+}
+
+.Navbar-left__info {
+}
+
+.Navbar-left__info-title {
+  text-decoration: none;
+  font-family: "Fascinate", sans-serif;
+  color: white;
+  font-size: 2.3rem;
+}
+.Navbar-right {
+  align-self: center;
+}
+
+.Navbar-link {
+  text-decoration: none;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0 2rem;
+  letter-spacing: 1.4px;
+}

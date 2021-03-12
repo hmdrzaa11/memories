@@ -1,0 +1,5 @@
+.Memories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, min-content));
+  gap: 2rem;
+}
