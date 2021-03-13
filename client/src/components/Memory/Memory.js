@@ -1,29 +1,42 @@
-import "./Memory.css";
+import classes from "./Memory.module.css";
+import Button from "../Button/Button";
 
 let Memory = (props) => {
   let {
     _id,
-    author,
+    author: { username },
     createdAt,
     description,
     image,
     ratingsAvg,
     title,
   } = props.memory;
+
   return (
-    <div className="Memory">
-      <div className="Memory-top">
-        <div className="Memory-top__image-wrapper">
+    <div className={classes.Memory}>
+      <div className={classes.top}>
+        <div className={classes.imageWrapper}>
           <img
-            src={`images/memories/${image}`}
+            src={`/images/memories/${image}`}
             alt={title}
-            className="Memory-top__image"
+            className={classes.image}
           />
-          <div className="Memory-top__image-overlay"></div>
+          <div className={classes.imageOverlay}></div>
         </div>
-        <h4 className="">{title}</h4>
+        <div className={classes.detail}>
+          <h3 className={classes.title}>{title}</h3>
+          <h4 className={classes.username}>{username}</h4>
+        </div>
+        <div className={classes.updateBtn}>
+          <i className={`${classes.white} fas fa-ellipsis-h`}></i>
+        </div>
       </div>
-      <div className="Memory-bottom"></div>
+      <div className={classes.bottom}>
+        <div className={classes.description}>{description}</div>
+        <div className={classes.cta}>
+          <Button>More</Button>
+        </div>
+      </div>
     </div>
   );
 };

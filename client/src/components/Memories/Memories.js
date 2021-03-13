@@ -1,9 +1,11 @@
 import Memory from "../Memory/Memory";
-import "./Memories.css";
+import classes from "./Memories.module.css";
 
 export default function Memories({ memories }) {
   let renderMemories = memories.map((mem) => (
     <Memory memory={mem} key={mem._id} />
   ));
-  return <div className="Memories container">{renderMemories}</div>;
+  return (
+    <div className={`${classes.Memories} container`}>{renderMemories}</div>
+  );
 }
