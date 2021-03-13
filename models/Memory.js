@@ -32,6 +32,14 @@ let memorySchema = new Schema({
   },
 });
 
+memorySchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "author",
+    select: "-__v -password -role -passwordChangedAt",
+  });
+  next();
+});
+
 let Memory = mongoose.model("Memory", memorySchema);
 
 module.exports = Memory;
