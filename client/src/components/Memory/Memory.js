@@ -12,7 +12,18 @@ let Memory = (props) => {
   } = props.memory;
   return (
     <div className="Memory">
-      <h1>{title}</h1>
+      <div className="Memory-top">
+        <div className="Memory-top__image-wrapper">
+          <img
+            src={`images/memories/${image}`}
+            alt={title}
+            className="Memory-top__image"
+          />
+          <div className="Memory-top__image-overlay"></div>
+        </div>
+        <h4 className="">{title}</h4>
+      </div>
+      <div className="Memory-bottom"></div>
     </div>
   );
 };
