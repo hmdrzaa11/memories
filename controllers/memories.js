@@ -26,7 +26,6 @@ exports.uploader = multer({
 //this is going to resize it
 
 exports.resizeImage = catchAsyncErrors(async (req, res, next) => {
-  console.log(req.file);
   if (!req.file) return next();
   let filename = `memories-${req.user._id}-${Date.now()}.jpeg`;
   req.file.filename = filename;
