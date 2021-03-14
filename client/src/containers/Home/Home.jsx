@@ -9,7 +9,6 @@ let Home = () => {
   let { error, loading, memories } = useSelector((state) => state.memories);
   let { fetchAllMemories } = actionCreators;
   //************* fetch All Memories  **************** */
-  console.log(error, loading, memories);
   useEffect(() => {
     dispatch(fetchAllMemories());
   }, [dispatch, fetchAllMemories]);

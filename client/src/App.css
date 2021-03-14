@@ -57,3 +57,38 @@ a {
     font-size: 43.75%;
   }
 }
+
+.btn:link,.btn:visited {
+  text-decoration: none;
+  display: block;
+  padding: .8rem 2rem;
+  font-size: 1.5rem;
+  border-radius: .5rem;
+  text-transform: uppercase;
+  transition: all .5s ease;
+}
+
+.btn:hover{
+  transform: translateY(-0.5rem);
+  box-shadow: 0 3px 4px 2px rgba(0,0,0,.2);
+}
+
+.primary{
+  background-color: darkslateblue;
+  color: white;
+}
+
+.secondary{
+  background-color: black;
+  color: white;
+}
+
+.danger{
+  background-color:#dc7a65 ;
+  color: white;
+}
+
+
+.gold{
+  color:  #c2b221  ;
+}

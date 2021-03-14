@@ -5,6 +5,7 @@
   overflow: hidden;
   border: 1px solid #c3c3c3;
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.52);
+  position: relative;
 }
 
 .imageWrapper {
@@ -79,4 +80,16 @@
 .cta {
   margin-top: 4rem;
   display: flex;
+}
+
+.date{
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.stars{
+  position: absolute;
+  bottom: .5rem;
+  right: 1rem;
 }
