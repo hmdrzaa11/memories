@@ -58,7 +58,7 @@ a {
   }
 }
 
-.btn:link,.btn:visited {
+button,.btn:link,.btn:visited {
   text-decoration: none;
   display: block;
   padding: .8rem 2rem;
@@ -91,4 +91,34 @@ a {
 
 .gold{
   color:  #c2b221  ;
+}
+
+
+.form-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  width: 80%;
+  margin: 3rem auto;
+}
+
+.form-header{
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.form-container{
+  width:50%;
+}
+.form{
+  padding: 2rem 4rem;
+}
+
+.submit-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }

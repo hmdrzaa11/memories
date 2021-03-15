@@ -1,0 +1,24 @@
+.inputWrapper{
+   
+}
+
+.input{
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 1rem 2rem;
+    margin:1rem 0 ;
+    border: 1px solid darkslateblue;
+    font-family: inherit;
+    border-radius: .6rem;
+    outline: none;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: inherit;
+}
+
+.input::placeholder{
+    font-weight: 500;
+    text-transform: uppercase;
+}
+

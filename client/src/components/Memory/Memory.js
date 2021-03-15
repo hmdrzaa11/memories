@@ -1,6 +1,6 @@
 import classes from "./Memory.module.css";
-import {Link} from 'react-router-dom'
-import moment from 'moment'
+import { Link } from "react-router-dom";
+import moment from "moment";
 
 let Memory = (props) => {
   let {
@@ -12,25 +12,25 @@ let Memory = (props) => {
     ratingsAvg,
     title,
   } = props.memory;
-  let renderStars=()=>{
-    let fullStars=Math.floor(ratingsAvg)
-    let stars=[]
-    let offStars= 5 - fullStars
-    for(let i=0;i<fullStars;i++){
-      stars.push(true)
+  let renderStars = () => {
+    let fullStars = Math.floor(ratingsAvg);
+    let stars = [];
+    let offStars = 5 - fullStars;
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(true);
     }
-    for(let i=0;i<offStars;i++){
-      stars.push(false)
+    for (let i = 0; i < offStars; i++) {
+      stars.push(false);
     }
-    let jsx=stars.map((st,i)=>{
-      if(st){
-        return <i key={i} className="fas fa-star gold"></i>
-      }else{
-        return <i key={i} className="fas fa-star grey"></i>
+    let jsx = stars.map((st, i) => {
+      if (st) {
+        return <i key={i} className="fas fa-star gold"></i>;
+      } else {
+        return <i key={i} className="fas fa-star grey"></i>;
       }
-    })
-    return jsx
-  }
+    });
+    return jsx;
+  };
   return (
     <div className={classes.Memory}>
       <div className={classes.top}>
@@ -54,12 +54,12 @@ let Memory = (props) => {
       <div className={classes.bottom}>
         <div className={classes.description}>{description}</div>
         <div className={classes.cta}>
-          <Link to={`memory/${_id}`} className='btn danger'>Review</Link>
+          <Link to={`memory/${_id}`} className="btn danger">
+            Review
+          </Link>
         </div>
       </div>
-        <div className={classes.stars}>
-          {renderStars()}
-        </div>
+      <div className={classes.stars}>{renderStars()}</div>
     </div>
   );
 };
