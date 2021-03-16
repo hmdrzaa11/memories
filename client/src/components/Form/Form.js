@@ -1,6 +1,7 @@
 import { useState } from "react";
 import classes from "./Form.module.css";
 import Input from "../Input/Input";
+import Loading from "../Loading/Loading";
 
 let SignupForm = (props) => {
   let [formState, setFormState] = useState(() => {
@@ -44,13 +45,15 @@ let SignupForm = (props) => {
   };
 
   return (
-    <div className="form-wrapper">
-      <div className="form-container">
-        <h1 className="form-header">{props.formHeader}</h1>
-        <form className="form" onSubmit={handleSubmit}>
+    <div className={classes.formWrapper}>
+      <div className={classes.formContainer}>
+        <h1 className={classes.formHeader}>{props.formHeader}</h1>
+        <form className={classes.form} onSubmit={handleSubmit}>
           {renderFields()}
-          <div className="submit-wrapper">
-            <button className="btn primary">Submit</button>
+          <div className={classes.submitWrapper}>
+            <button className="btn primary">
+              {props.loading ? "Loading..." : "Submit"}
+            </button>
           </div>
         </form>
       </div>

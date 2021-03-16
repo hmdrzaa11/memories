@@ -1,7 +1,7 @@
 import "./Navbar.css";
 import logo from "../../images/camera.png";
 import { Link } from "react-router-dom";
-
+//TODO render create post if user is auth
 let Navbar = () => {
   return (
     <nav className="Navbar">

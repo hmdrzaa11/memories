@@ -1,4 +1,6 @@
 import Form from "../../components/Form/Form";
+import { actionCreators } from "../../state";
+import { useDispatch, useSelector } from "react-redux";
 
 const FIELDS = [
   {
@@ -23,13 +25,27 @@ const FIELDS = [
   },
 ];
 
-let Signup = () => {
+let Signup = (props) => {
+  let dispatch = useDispatch();
   let onFormSubmit = (formData) => {
-    console.log(formData);
+    dispatch(actionCreators.signupAction(formData, props.history));
+  };
+  //TODO Render a NOtification Component in here when you get errors
+  let { loading, error } = useSelector((state) => state.auth);
+  let renderErrors = () => {
+    if (error) {
+      return <h2>{error}</h2>;
+    }
   };
   return (
     <div>
-      <Form fields={FIELDS} formHeader="Sign up" onFormSubmit={onFormSubmit} />
+      {renderErrors()}
+      <Form
+        fields={FIELDS}
+        formHeader="Sign up"
+        onFormSubmit={onFormSubmit}
+        loading={loading}
+      />
     </div>
   );
 };
