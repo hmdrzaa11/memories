@@ -69,7 +69,7 @@ exports.logout = (req, res, next) => {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
   });
-  res.send();
+  res.redirect("/");
 };
 
 exports.getCurrentUser = (req, res, next) => {

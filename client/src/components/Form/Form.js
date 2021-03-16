@@ -12,6 +12,8 @@ let SignupForm = (props) => {
     return state;
   });
 
+  let [image, setImage] = useState(null);
+
   let handleOnChange = (e) => {
     setFormState((preState) => {
       return {
@@ -21,22 +23,47 @@ let SignupForm = (props) => {
     });
   };
 
+  let handleFileInputChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
   let renderFields = () => {
-    return props.fields.map((field) => (
-      <Input
-        key={field.name}
-        type={field.type}
-        name={field.name}
-        placeholder={field.placeholder}
-        onChange={handleOnChange}
-        value={formState[field.name]}
-      />
-    ));
+    return props.fields.map((field) => {
+      if (field.type === "file") {
+        return (
+          <Input
+            key={field.name}
+            type={field.type}
+            name={field.name}
+            onChange={handleFileInputChange}
+          />
+        );
+      } else {
+        return (
+          <Input
+            key={field.name}
+            type={field.type}
+            name={field.name}
+            placeholder={field.placeholder}
+            onChange={handleOnChange}
+            value={formState[field.name]}
+          />
+        );
+      }
+    });
   };
 
   let handleSubmit = (e) => {
     e.preventDefault();
-    props.onFormSubmit(formState);
+    let formData = new FormData();
+    props.fields.forEach((field) => {
+      if (field.name === "image") {
+        formData.append("image", image);
+      } else {
+        formData.append(field.name, formState[field.name]);
+      }
+    });
+    props.onFormSubmit(formData);
     let emptyFields = {};
     props.fields.forEach((field) => {
       emptyFields[field.name] = ""; //here we set every field to empty field

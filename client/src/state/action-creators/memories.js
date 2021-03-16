@@ -16,3 +16,20 @@ export let fetchAllMemories = () => async (dispatch) => {
     });
   }
 };
+
+export let createMemory = (formData, history) => async (dispatch) => {
+  try {
+    dispatch({ type: actionTypes.CREATE_MEMORY });
+    let { data } = await axios.post("/api/v1/memories", formData);
+    dispatch({
+      type: actionTypes.CREATE_MEMORY_SUCCESS,
+      payload: data.memory,
+    });
+    history.push("/");
+  } catch (error) {
+    dispatch({
+      type: actionTypes.CREATE_MEMORY_FAILED,
+      payload: error.response.data.message,
+    });
+  }
+};
