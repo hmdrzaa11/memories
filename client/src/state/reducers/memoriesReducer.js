@@ -26,6 +26,24 @@ let memoriesReducer = (state = INITIAL_STATE, action) => {
         memories: [],
         error: action.payload,
       };
+    case actionTypes.CREATE_MEMORY:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case actionTypes.CREATE_MEMORY_SUCCESS:
+      return {
+        loading: false,
+        error: null,
+        memories: [...state.memories, action.payload],
+      };
+    case actionTypes.CREATE_MEMORY_FAILED:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

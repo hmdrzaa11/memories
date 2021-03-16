@@ -43,7 +43,14 @@ export let getCurrentUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: actionTypes.SIGN_IN_FAILED,
-      payload: "please login",
+      payload: "",
     });
   }
+};
+
+export let logoutAction = () => async (dispatch) => {
+  await axios.get("/api/v1/users/logout");
+  dispatch({
+    type: actionTypes.LOGOUT,
+  });
 };

@@ -43,6 +43,12 @@ let authReducer = (state = INITIAL_STATE, action) => {
         error: action.payload,
         user: null,
       };
+    case actionTypes.LOGOUT:
+      return {
+        loading: false,
+        error: null,
+        user: null,
+      };
     default:
       return state;
   }

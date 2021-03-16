@@ -7,6 +7,7 @@ import Signup from "./containers/Signup/Signup";
 import Signin from "./containers/Signin/Signin";
 import { actionCreators } from "./state";
 import { useEffect } from "react";
+import CreateMemory from "./containers/CreateMemory/CreateMemory";
 
 let App = () => {
   let { getCurrentUser } = actionCreators;
@@ -21,6 +22,7 @@ let App = () => {
         <Route path="/" exact component={Home} />
         <Route path="/signup" component={Signup} />
         <Route path="/signin" component={Signin} />
+        <Route path="/create-memory" component={CreateMemory} />
       </Switch>
     </div>
   );

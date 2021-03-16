@@ -9,6 +9,8 @@ let Input = ({ type, label, ...resetProps }) => {
         );
       case "email":
         return <input type="email" {...resetProps} className={classes.input} />;
+      case "file":
+        return <input type="file" {...resetProps} />;
       default:
         return <input type="text" {...resetProps} className={classes.input} />;
     }

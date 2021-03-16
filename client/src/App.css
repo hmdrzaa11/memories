@@ -97,3 +97,7 @@ button,.btn:link,.btn:visited {
 }
 
 
+.logout-button{
+  display: inline-block;
+
+}
