@@ -21,6 +21,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   line-height: 1.6;
+  background-color: #E5E5E5;
 }
 
 button {
@@ -66,6 +67,8 @@ button,.btn:link,.btn:visited {
   border-radius: .5rem;
   text-transform: uppercase;
   transition: all .5s ease;
+  font-weight: 400;
+  font-family: inherit;
 }
 
 .btn:hover{
@@ -94,31 +97,3 @@ button,.btn:link,.btn:visited {
 }
 
 
-.form-wrapper{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70vh;
-  width: 80%;
-  margin: 3rem auto;
-}
-
-.form-header{
-  text-align: center;
-  font-size: 4rem;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-.form-container{
-  width:50%;
-}
-.form{
-  padding: 2rem 4rem;
-}
-
-.submit-wrapper{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}

@@ -71,3 +71,10 @@ exports.logout = (req, res, next) => {
   });
   res.send();
 };
+
+exports.getCurrentUser = (req, res, next) => {
+  res.json({
+    status: "success",
+    user: req.user,
+  });
+};
