@@ -8,6 +8,7 @@ import Signin from "./containers/Signin/Signin";
 import { actionCreators } from "./state";
 import { useEffect } from "react";
 import CreateMemory from "./containers/CreateMemory/CreateMemory";
+import EditMemory from "./containers/EditMemory/EditMemory";
 
 let App = () => {
   let { getCurrentUser } = actionCreators;
@@ -23,6 +24,7 @@ let App = () => {
         <Route path="/signup" component={Signup} />
         <Route path="/signin" component={Signin} />
         <Route path="/create-memory" component={CreateMemory} />
+        <Route path="/edit/:memId" component={EditMemory} />
       </Switch>
     </div>
   );

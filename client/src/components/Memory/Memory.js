@@ -1,17 +1,20 @@
 import classes from "./Memory.module.css";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 let Memory = (props) => {
   let {
     _id,
-    author: { username },
+    author: { username, _id: owner },
     createdAt,
     description,
     image,
     ratingsAvg,
     title,
   } = props.memory;
+  let { user } = useSelector((state) => state.auth);
+  let isMineMemory = user && owner === user._id;
   let renderStars = () => {
     let fullStars = Math.floor(ratingsAvg);
     let stars = [];
@@ -47,9 +50,13 @@ let Memory = (props) => {
           <h4 className={classes.username}>{username}</h4>
           <div className={classes.date}>{moment(createdAt).fromNow()}</div>
         </div>
-        <div className={classes.updateBtn}>
-          <i className={`${classes.white} fas fa-ellipsis-h`}></i>
-        </div>
+        <Link to={`/edit/${_id}`} className={classes.updateBtn}>
+          {isMineMemory ? (
+            <i className={`${classes.white} fas fa-ellipsis-h`}></i>
+          ) : (
+            ""
+          )}
+        </Link>
       </div>
       <div className={classes.bottom}>
         <div className={classes.description}>{description}</div>

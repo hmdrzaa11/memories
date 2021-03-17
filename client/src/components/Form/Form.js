@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./Form.module.css";
 import Input from "../Input/Input";
 import Loading from "../Loading/Loading";
@@ -11,8 +11,20 @@ let SignupForm = (props) => {
     });
     return state;
   });
-
   let [image, setImage] = useState(null);
+
+  let { memory } = props;
+
+  useEffect(() => {
+    if (!memory) return;
+    let initialValue = {};
+    for (let key in memory) {
+      if (key in formState) {
+        initialValue[key] = memory[key];
+      }
+    }
+    setFormState(initialValue);
+  }, [memory]);
 
   let handleOnChange = (e) => {
     setFormState((preState) => {
@@ -26,7 +38,7 @@ let SignupForm = (props) => {
   let handleFileInputChange = (e) => {
     setImage(e.target.files[0]);
   };
-
+  //TODO create a function to call after update success and clear inputs
   let renderFields = () => {
     return props.fields.map((field) => {
       if (field.type === "file") {
@@ -36,6 +48,7 @@ let SignupForm = (props) => {
             type={field.type}
             name={field.name}
             onChange={handleFileInputChange}
+            imageSrc={formState.image}
           />
         );
       } else {
@@ -57,7 +70,7 @@ let SignupForm = (props) => {
     e.preventDefault();
     let formData = new FormData();
     props.fields.forEach((field) => {
-      if (field.name === "image") {
+      if (field.name === "image" && image) {
         formData.append("image", image);
       } else {
         formData.append(field.name, formState[field.name]);

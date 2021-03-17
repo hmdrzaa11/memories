@@ -44,6 +44,25 @@ let memoriesReducer = (state = INITIAL_STATE, action) => {
         loading: false,
         error: action.payload,
       };
+    case actionTypes.FETCH_SINGLE_MEMORY:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case actionTypes.FETCH_SINGLE_MEMORY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        memories: [action.payload],
+      };
+    case actionTypes.FETCH_SINGLE_MEMORY_FAILED:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

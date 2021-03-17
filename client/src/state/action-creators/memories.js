@@ -33,3 +33,32 @@ export let createMemory = (formData, history) => async (dispatch) => {
     });
   }
 };
+
+export let fetchSingleMemory = (memId) => async (dispatch) => {
+  try {
+    dispatch({ type: actionTypes.FETCH_SINGLE_MEMORY });
+    let { data } = await axios.get(`/api/v1/memories/${memId}`);
+    dispatch({
+      type: actionTypes.FETCH_SINGLE_MEMORY_SUCCESS,
+      payload: data.memory,
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.FETCH_SINGLE_MEMORY_SUCCESS,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export let updateMemory = (formData, memId, history) => async (dispatch) => {
+  try {
+    dispatch({ type: actionTypes.UPDATE_MEMORY });
+    await axios.patch(`/api/v1/memories/${memId}`, formData);
+    history.push("/");
+  } catch (error) {
+    dispatch({
+      type: actionTypes.UPDATE_MEMORY_FAILED,
+      payload: error.response.data.message,
+    });
+  }
+};
