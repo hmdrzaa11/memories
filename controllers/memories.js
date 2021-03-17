@@ -101,3 +101,11 @@ exports.deleteMemory = catchAsyncErrors(async (req, res, next) => {
     status: "success",
   });
 });
+
+exports.getSingleMemory = catchAsyncErrors(async (req, res, next) => {
+  let memory = await Memory.findById(req.params.memId);
+  res.json({
+    status: "success",
+    memory,
+  });
+});

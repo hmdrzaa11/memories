@@ -1,6 +1,6 @@
 import classes from "./Input.module.css";
 
-let Input = ({ type, label, ...resetProps }) => {
+let Input = ({ type, label, imageSrc, ...resetProps }) => {
   let renderInput = () => {
     switch (type) {
       case "password":
@@ -10,7 +10,30 @@ let Input = ({ type, label, ...resetProps }) => {
       case "email":
         return <input type="email" {...resetProps} className={classes.input} />;
       case "file":
-        return <input type="file" {...resetProps} />;
+        return (
+          <div className={classes.fileWrapper}>
+            <input
+              type="file"
+              {...resetProps}
+              className={classes.fileInput}
+              id="file"
+            />
+            <label className={classes.fileLabel} htmlFor="file">
+              Select an image
+            </label>
+            <div>
+              {imageSrc ? (
+                <img
+                  src={`/images/memories/${imageSrc}`}
+                  alt="img"
+                  className={classes.fileImage}
+                />
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+        );
       default:
         return <input type="text" {...resetProps} className={classes.input} />;
     }

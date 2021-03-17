@@ -6,6 +6,7 @@ let {
   getAllMemories,
   updateMemory,
   deleteMemory,
+  getSingleMemory,
 } = require("../controllers/memories");
 const { isAuthenticated } = require("../controllers/users");
 let reviewRouter = require("./reviews");
@@ -18,7 +19,8 @@ router
 router
   .route("/:memId")
   .patch(isAuthenticated, uploader.single("image"), resizeImage, updateMemory)
-  .delete(isAuthenticated, deleteMemory);
+  .delete(isAuthenticated, deleteMemory)
+  .get(getSingleMemory);
 
 //Nested Routes
 router.use("/:memId/reviews", reviewRouter);
