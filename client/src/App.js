@@ -9,6 +9,7 @@ import { actionCreators } from "./state";
 import { useEffect } from "react";
 import CreateMemory from "./containers/CreateMemory/CreateMemory";
 import EditMemory from "./containers/EditMemory/EditMemory";
+import Review from "./containers/Review/Review";
 
 let App = () => {
   let { getCurrentUser } = actionCreators;
@@ -25,6 +26,7 @@ let App = () => {
         <Route path="/signin" component={Signin} />
         <Route path="/create-memory" component={CreateMemory} />
         <Route path="/edit/:memId" component={EditMemory} />
+        <Route path="/review/:memId" component={Review} />
       </Switch>
     </div>
   );

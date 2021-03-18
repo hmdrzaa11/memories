@@ -1,5 +1,5 @@
-import Form from "../../components/Form/Form";
-import { useDispatch, useSelector } from "react-redux";
+import Form from "../../components/Forms/CreateMemoryForm/CreateMemoryForm";
+import { useDispatch } from "react-redux";
 import { actionCreators } from "../../state";
 
 const FIELDS = [
@@ -24,6 +24,7 @@ export default function CreateMemory(props) {
   let handleFormSubmit = (formData) => {
     dispatch(actionCreators.createMemory(formData, props.history));
   };
+
   return (
     <div>
       <Form
