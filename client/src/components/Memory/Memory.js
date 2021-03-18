@@ -61,7 +61,7 @@ let Memory = (props) => {
       <div className={classes.bottom}>
         <div className={classes.description}>{description}</div>
         <div className={classes.cta}>
-          <Link to={`memory/${_id}`} className="btn danger">
+          <Link to={`review/${_id}`} className="btn danger">
             Review
           </Link>
         </div>

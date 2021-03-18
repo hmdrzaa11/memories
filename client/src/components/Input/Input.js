@@ -35,7 +35,14 @@ let Input = ({ type, label, imageSrc, ...resetProps }) => {
           </div>
         );
       default:
-        return <input type="text" {...resetProps} className={classes.input} />;
+        return (
+          <input
+            type="text"
+            {...resetProps}
+            onChange={resetProps.onChange}
+            className={classes.input}
+          />
+        );
     }
   };
   return <div className={classes.inputWrapper}>{renderInput()}</div>;

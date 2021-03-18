@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actionCreators } from "../../state";
-import From from "../../components/Form/Form";
+import From from "../../components/Forms/CreateMemoryForm/CreateMemoryForm";
 
 const FIELDS = [
   {
@@ -24,7 +24,7 @@ export default function EditMemory(props) {
   let dispatch = useDispatch();
   let { memId } = props.match.params;
   let { fetchSingleMemory } = actionCreators;
-  let { memories, loading, error } = useSelector((state) => state.memories);
+  let { memories } = useSelector((state) => state.memories);
   let memory = memories.find((mem) => mem._id === memId);
 
   useEffect(() => {

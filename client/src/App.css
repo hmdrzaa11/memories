@@ -21,7 +21,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 
 button {
@@ -59,45 +59,70 @@ a {
   }
 }
 
-button,.btn:link,.btn:visited {
+button,
+.btn:link,
+.btn:visited {
   text-decoration: none;
   display: block;
-  padding: .8rem 2rem;
+  padding: 0.8rem 2rem;
   font-size: 1.5rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   text-transform: uppercase;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   font-weight: 400;
   font-family: inherit;
 }
 
-.btn:hover{
+.btn:hover {
   transform: translateY(-0.5rem);
-  box-shadow: 0 3px 4px 2px rgba(0,0,0,.2);
+  box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.2);
 }
 
-.primary{
+.primary {
   background-color: darkslateblue;
   color: white;
 }
 
-.secondary{
+.secondary {
   background-color: black;
   color: white;
 }
 
-.danger{
-  background-color:#dc7a65 ;
+.danger {
+  background-color: #dc7a65;
   color: white;
 }
 
-
-.gold{
-  color:  #c2b221  ;
+.gold {
+  color: #c2b221;
 }
 
-
-.logout-button{
+.logout-button {
   display: inline-block;
+}
 
+.form-container {
+  width: 45%;
+  margin: 8rem auto;
+  background-color: white;
+  height: auto;
+  padding: 4rem;
+  box-shadow: 0 4px 4px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.form-header {
+  font-size: 4rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.form {
+}
+
+.submit-wrapper {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
