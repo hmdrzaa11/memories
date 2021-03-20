@@ -67,6 +67,14 @@ reviewSchema.post(/^findOneAnd/, async function () {
   }
 });
 
+reviewSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "reviewer",
+    select: "-__v -password -passwordChangedAt -passwordResetToken -role",
+  });
+  next();
+});
+
 let Review = mongoose.model("Review", reviewSchema);
 
 module.exports = Review;

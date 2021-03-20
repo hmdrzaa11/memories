@@ -1,0 +1,29 @@
+.wrapper {
+  width: 40%;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+}
+
+.detail {
+  text-align: center;
+}
+
+.header {
+  font-size: 5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  font-family: "Ranchers", sans-serif;
+  margin-bottom: 3rem;
+}
+
+.description {
+  text-align: left;
+  font-size: 1.6rem;
+  padding: 1rem 2rem;
+  color: #777777;
+}
+
+.comments {
+  margin-top: 2rem;
+}

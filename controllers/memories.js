@@ -31,7 +31,7 @@ exports.resizeImage = catchAsyncErrors(async (req, res, next) => {
   req.file.filename = filename;
   let filePath = path.join(__dirname, `../public/images/memories/${filename}`);
   await sharp(req.file.buffer)
-    .resize(600, 600)
+    .resize(1200, 1024)
     .toFormat("jpeg")
     .jpeg({ quality: 90 })
     .toFile(filePath);
@@ -103,7 +103,7 @@ exports.deleteMemory = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.getSingleMemory = catchAsyncErrors(async (req, res, next) => {
-  let memory = await Memory.findById(req.params.memId);
+  let memory = await Memory.findById(req.params.memId).populate("reviews");
   res.json({
     status: "success",
     memory,
