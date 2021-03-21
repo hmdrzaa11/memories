@@ -49,6 +49,7 @@ let userSchema = new Schema({
       message: ['role can only be "user" or "admin"'],
     },
     default: "user",
+    select: false,
   },
   passwordResetToken: String,
   passwordChangedAt: Date,

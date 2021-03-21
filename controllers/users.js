@@ -73,6 +73,9 @@ exports.logout = (req, res, next) => {
 };
 
 exports.getCurrentUser = (req, res, next) => {
+  req.user.password = undefined;
+  req.user.passwordResetToken = undefined;
+  req.user.passwordChangedAt = undefined;
   res.json({
     status: "success",
     user: req.user,

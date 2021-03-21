@@ -126,3 +126,17 @@ button,
   justify-content: center;
   align-items: center;
 }
+
+.fa-edit {
+  color: #4b3f72;
+}
+
+.fa-times {
+  color: #dc7a65;
+}
+
+[class^="fa"] {
+  font-size: 1.8rem;
+  margin: 0 0.4rem;
+  cursor: pointer;
+}
