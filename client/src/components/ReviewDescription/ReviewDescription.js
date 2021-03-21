@@ -1,11 +1,30 @@
 import { useSelector } from "react-redux";
 import Comment from "../Comment/Comment";
 import classes from "./ReviewDescription.module.css";
+import ReviewForm from "../Forms/ReviewForm/ReviewForm";
+import { useDispatch } from "react-redux";
+import { actionCreators } from "../../state";
+import { useEffect, useRef } from "react";
+
 export default function ReviewDescription(props) {
   let { title, description, reviews, _id } = props.memory;
   let { user } = useSelector((state) => state.auth);
+  let scrollDiv = useRef(null);
+
+  let dispatch = useDispatch();
+
+  let handleFormSubmit = (formData) => {
+    dispatch(actionCreators.createReview(_id, formData));
+  };
+
+  useEffect(() => {
+    if (scrollDiv.current) {
+      scrollDiv.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [reviews]);
+
   let renderReviews = () => {
-    if (reviews && user) {
+    if (reviews) {
       return reviews.map((review) => (
         <Comment
           author={review.reviewer.username}
@@ -13,7 +32,7 @@ export default function ReviewDescription(props) {
           review={review.review}
           key={review._id}
           authorId={review.reviewer._id}
-          userId={user._id}
+          userId={user ? user._id : ""}
           memId={_id}
           reviewId={review._id}
         />
@@ -26,7 +45,13 @@ export default function ReviewDescription(props) {
         <h2 className={classes.header}>{title}</h2>
         <p className={classes.description}>{description}</p>
       </div>
-      <div className={classes.comments}>{renderReviews()}</div>
+      <div className={classes.formWrapper}>
+        <ReviewForm handleFormSubmit={handleFormSubmit} noCancel />
+      </div>
+      <div className={classes.comments}>
+        {renderReviews()}
+        <div ref={scrollDiv}></div>
+      </div>
     </div>
   );
 }

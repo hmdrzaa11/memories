@@ -49,6 +49,11 @@ let authReducer = (state = INITIAL_STATE, action) => {
         error: null,
         user: null,
       };
+    case actionTypes.RESET_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }

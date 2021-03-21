@@ -75,6 +75,23 @@ let memoriesReducer = (state = INITIAL_STATE, action) => {
         error: action.payload,
         loading: false,
       };
+    case actionTypes.CREATE_REVIEW:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case actionTypes.CREATE_REVIEW_FAILED:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case actionTypes.RESET_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }

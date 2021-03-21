@@ -14,9 +14,10 @@ export default function Comment({
   reviewId,
 }) {
   let [isUpdateMode, setUpdateMode] = useState(false);
-  let isMine = userId === authorId;
+
+  let isMine = false;
+  if (userId && userId === authorId) isMine = true;
   let dispatch = useDispatch();
-  //TODO add a dynamic scroll to bottom and also render buttons based on user auth
 
   let handleCancel = (e) => {
     setUpdateMode((pre) => !pre);
@@ -29,6 +30,11 @@ export default function Comment({
       );
     }
   };
+
+  let handleDeleteReview = () => {
+    dispatch(actionCreators.deleteReview(memId, reviewId));
+  };
+
   let renderContent = () => {
     if (isUpdateMode) {
       return (
@@ -48,6 +54,7 @@ export default function Comment({
       );
     }
   };
+
   return (
     <div className={classes.wrapper}>
       <h4 className={classes.author}>{author}</h4>
@@ -65,7 +72,7 @@ export default function Comment({
                 onClick={(e) => setUpdateMode((preState) => !preState)}
                 className="fas fa-edit"
               ></i>
-              <i className="fas fa-times"></i>
+              <i onClick={handleDeleteReview} className="fas fa-times"></i>
             </div>
           ) : (
             ""

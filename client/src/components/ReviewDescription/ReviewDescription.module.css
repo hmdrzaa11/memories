@@ -26,4 +26,11 @@
 
 .comments {
   margin-top: 2rem;
+  padding: 1rem;
+  height: 40rem;
+  overflow-y: scroll;
+}
+
+.formWrapper {
+  margin: 4rem 0;
 }
