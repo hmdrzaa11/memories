@@ -1,0 +1,22 @@
+.wrapper {
+  background-color: #ec765c;
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  z-index: 3;
+}
+.messageBox {
+}
+.header {
+  text-align: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+.message {
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: white;
+}

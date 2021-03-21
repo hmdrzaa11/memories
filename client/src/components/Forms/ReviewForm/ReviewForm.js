@@ -5,11 +5,12 @@ export default function ReviewForm({
   rating,
   onCancelClick,
   handleFormSubmit,
+  noCancel,
 }) {
   let [formState, setFormState] = useState(() => {
     return {
-      review,
-      rating,
+      review: review || "",
+      rating: rating || "",
     };
   });
   let handleInputChange = (e) => {
@@ -18,8 +19,10 @@ export default function ReviewForm({
       [e.target.name]: e.target.value,
     }));
   };
+
   let handleFromSubmit = () => {
     handleFormSubmit(formState);
+    setFormState({ rating: "", review: "" });
   };
   return (
     <form>
@@ -30,6 +33,7 @@ export default function ReviewForm({
           value={formState.review}
           onChange={handleInputChange}
           name="review"
+          placeholder="Your Review..."
         />
         <input
           className={classes.ratingInput}
@@ -39,11 +43,18 @@ export default function ReviewForm({
           max={5}
           onChange={handleInputChange}
           name="rating"
+          placeholder="Rating..."
+          step="any"
         />
       </div>
+
       <div className={classes.action}>
         <i className="fas fa-edit" onClick={handleFromSubmit}></i>
-        <i onClick={onCancelClick} className="fas fa-times"></i>
+        {!noCancel ? (
+          <i onClick={onCancelClick} className="fas fa-times"></i>
+        ) : (
+          ""
+        )}
       </div>
     </form>
   );

@@ -67,7 +67,7 @@ export let updateReview = (memId, reviewId, formData, callback) => async (
   dispatch
 ) => {
   try {
-    let { data } = await axios.patch(
+    await axios.patch(
       `/api/v1/memories/${memId}/reviews/${reviewId}`,
       formData
     );
@@ -79,4 +79,32 @@ export let updateReview = (memId, reviewId, formData, callback) => async (
       payload: error.response.data.message,
     });
   }
+};
+
+export let deleteReview = (memId, reviewId) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/v1/memories/${memId}/reviews/${reviewId}`);
+    await dispatch(fetchSingleMemory(memId));
+  } catch (error) {
+    dispatch({
+      type: actionTypes.DELETE_REVIEW_FAILED,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export let createReview = (memId, formData) => async (dispatch) => {
+  try {
+    await axios.post(`/api/v1/memories/${memId}/reviews`, formData);
+    await dispatch(fetchSingleMemory(memId));
+  } catch (error) {
+    dispatch({
+      type: actionTypes,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export let resetAllErrors = () => (dispatch) => {
+  dispatch({ type: actionTypes.RESET_ERRORS });
 };
