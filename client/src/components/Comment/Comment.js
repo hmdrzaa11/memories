@@ -1,44 +1,43 @@
 import { useState } from "react";
+import ReviewForm from "../Forms/ReviewForm/ReviewForm";
 import classes from "./Comment.module.css";
+import { useDispatch } from "react-redux";
+import { actionCreators } from "../../state";
 
-export default function Comment({ author, review, rating }) {
+export default function Comment({
+  author,
+  review,
+  rating,
+  authorId,
+  userId,
+  memId,
+  reviewId,
+}) {
   let [isUpdateMode, setUpdateMode] = useState(false);
-
-  let [formState, setFormState] = useState(() => {
-    return {
-      review,
-      rating,
-    };
-  });
+  let isMine = userId === authorId;
+  let dispatch = useDispatch();
   //TODO add a dynamic scroll to bottom and also render buttons based on user auth
+
+  let handleCancel = (e) => {
+    setUpdateMode((pre) => !pre);
+  };
+
+  let handleFormSubmit = (formData) => {
+    if (isUpdateMode) {
+      dispatch(
+        actionCreators.updateReview(memId, reviewId, formData, handleCancel)
+      );
+    }
+  };
   let renderContent = () => {
     if (isUpdateMode) {
       return (
-        <form>
-          <div className={classes.inputWrapper}>
-            <input
-              className={classes.reviewInput}
-              type="text"
-              value={formState.review}
-            />
-            <input
-              className={classes.ratingInput}
-              type="number"
-              value={formState.rating}
-              min="4.8"
-              max="5"
-            />
-          </div>
-          <div className={classes.action}>
-            <button className="btn primary">Update</button>
-            <button
-              className="btn danger"
-              onClick={(e) => setUpdateMode((pre) => !pre)}
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
+        <ReviewForm
+          review={review}
+          rating={rating}
+          onCancelClick={handleCancel}
+          handleFormSubmit={handleFormSubmit}
+        />
       );
     } else {
       return (
@@ -58,21 +57,23 @@ export default function Comment({ author, review, rating }) {
       >
         {renderContent()}
       </div>
-      <div className={classes.action}>
-        {!isUpdateMode ? (
-          <>
-            <button
-              className="btn primary"
-              onClick={(e) => setUpdateMode((preState) => !preState)}
-            >
-              update
-            </button>
-            <button className="btn danger">delete</button>
-          </>
-        ) : (
-          ""
-        )}
-      </div>
+      {isMine ? (
+        <div className={classes.action}>
+          {!isUpdateMode ? (
+            <div className={classes.action}>
+              <i
+                onClick={(e) => setUpdateMode((preState) => !preState)}
+                className="fas fa-edit"
+              ></i>
+              <i className="fas fa-times"></i>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

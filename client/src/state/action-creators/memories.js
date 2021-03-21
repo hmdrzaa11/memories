@@ -62,3 +62,21 @@ export let updateMemory = (formData, memId, history) => async (dispatch) => {
     });
   }
 };
+
+export let updateReview = (memId, reviewId, formData, callback) => async (
+  dispatch
+) => {
+  try {
+    let { data } = await axios.patch(
+      `/api/v1/memories/${memId}/reviews/${reviewId}`,
+      formData
+    );
+    await dispatch(fetchSingleMemory(memId));
+    callback();
+  } catch (error) {
+    dispatch({
+      type: actionTypes.UPDATE_MEMORY_FAILED,
+      payload: error.response.data.message,
+    });
+  }
+};

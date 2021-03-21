@@ -14,6 +14,10 @@ export let UPDATE_MEMORY = "UPDATE_MEMORY";
 export let UPDATE_MEMORY_SUCCESS = "UPDATE_MEMORY_SUCCESS";
 export let UPDATE_MEMORY_FAILED = "UPDATE_MEMORY_FAILED";
 
+export let UPDATE_REVIEW = "UPDATE_REVIEW";
+export let UPDATE_REVIEW_SUCCESS = "UPDATE_REVIEW_SUCCESS";
+export let UPDATE_REVIEW_FAILED = "UPDATE_REVIEW_FAILED";
+
 //***************** AUTH ************************* */
 
 export let SIGN_UP = "SIGN_UP";

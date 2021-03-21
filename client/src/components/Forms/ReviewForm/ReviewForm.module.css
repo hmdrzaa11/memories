@@ -1,0 +1,48 @@
+.inputWrapper {
+  margin-bottom: 2rem;
+  margin-top: 0.4rem;
+}
+
+.reviewInput {
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 0.5rem 1rem;
+  border: none;
+  width: 85%;
+}
+
+.ratingInput {
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 0.5rem 1rem;
+  border: none;
+  text-align: center;
+  width: 8rem;
+}
+
+.ratingInput:focus,
+.reviewInput:focus {
+  outline: none;
+}
+.action {
+  display: flex;
+  justify-content: center;
+}
+
+.action button {
+  margin: 0 1rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.ratingInput::-webkit-outer-spin-button,
+.ratingInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.ratingInput[type="number"] {
+  -moz-appearance: textfield;
+}

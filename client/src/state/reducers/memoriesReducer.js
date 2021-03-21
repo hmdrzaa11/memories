@@ -63,6 +63,18 @@ let memoriesReducer = (state = INITIAL_STATE, action) => {
         loading: false,
         error: action.payload,
       };
+    case actionTypes.UPDATE_MEMORY:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case actionTypes.UPDATE_MEMORY_FAILED:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      };
     default:
       return state;
   }
