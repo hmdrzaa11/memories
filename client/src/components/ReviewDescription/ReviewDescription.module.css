@@ -21,7 +21,7 @@
   text-align: left;
   font-size: 1.6rem;
   padding: 1rem 2rem;
-  color: #777777;
+  color: #474747;
 }
 
 .comments {
@@ -33,4 +33,12 @@
 
 .formWrapper {
   margin: 4rem 0;
+}
+
+.descriptionHeader {
+  text-align: left;
+  padding: 1rem 2rem;
+  font-family: "Ranchers", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
 }

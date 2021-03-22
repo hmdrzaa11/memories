@@ -25,7 +25,7 @@ export default function EditMemory(props) {
   let dispatch = useDispatch();
   let { memId } = props.match.params;
   let { fetchSingleMemory } = actionCreators;
-  let { memories, error } = useSelector((state) => state.memories);
+  let { memories, error, loading } = useSelector((state) => state.memories);
   let memory = memories.find((mem) => mem._id === memId);
 
   useEffect(() => {
@@ -54,6 +54,7 @@ export default function EditMemory(props) {
         formHeader="Update A Memory"
         memory={memory}
         onFormSubmit={handleSubmit}
+        isLoading={loading}
       />
     </div>
   );

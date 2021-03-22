@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Input from "../../Input/Input";
+import ButtonLoading from "../../ButtonLoading/ButtonLoading";
 
 export default function SignupForm(props) {
   let [formState, setFormState] = useState(() =>
@@ -31,13 +32,21 @@ export default function SignupForm(props) {
     props.onFormSubmit(formState);
   };
 
+  let renderButtonText = () => {
+    if (props.isLoading) {
+      return <ButtonLoading />;
+    } else {
+      return props.formHeader === "Sing in" ? "Sign In" : "Sign Up";
+    }
+  };
+
   return (
     <div className="form-container">
       <h2 className="form-header">{props.formHeader}</h2>
       <form className="form" onSubmit={handleFormSubmit}>
         {renderInputs}
         <div className="submit-wrapper">
-          <button className="btn primary">Sign up</button>
+          <button className="btn primary">{renderButtonText()}</button>
         </div>
       </form>
     </div>

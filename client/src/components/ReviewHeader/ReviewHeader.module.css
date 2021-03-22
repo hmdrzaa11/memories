@@ -16,7 +16,7 @@
   align-items: center;
   border-radius: 5px;
   overflow: hidden;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .image {

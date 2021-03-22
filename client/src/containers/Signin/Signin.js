@@ -18,7 +18,7 @@ const FIELDS = [
 
 let Signin = (props) => {
   let dispatch = useDispatch();
-  let { error } = useSelector((state) => state.auth);
+  let { error, loading } = useSelector((state) => state.auth);
   let onFormSubmit = (formData) => {
     dispatch(actionCreators.signinAction(formData, props.history));
   };
@@ -35,7 +35,12 @@ let Signin = (props) => {
   return (
     <div>
       {renderErrors()}
-      <Form fields={FIELDS} formHeader="Sing in" onFormSubmit={onFormSubmit} />
+      <Form
+        fields={FIELDS}
+        formHeader="Sing in"
+        onFormSubmit={onFormSubmit}
+        isLoading={loading}
+      />
     </div>
   );
 };

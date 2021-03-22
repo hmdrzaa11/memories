@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Input from "../../Input/Input";
+import ButtonLoading from "../../ButtonLoading/ButtonLoading";
 
 export default function CreateMemoryForm(props) {
   let [formState, setFormState] = useState(() => {
@@ -71,15 +72,24 @@ export default function CreateMemoryForm(props) {
     }
     props.onFormSubmit(formData);
   };
+
+  let renderButtonText = () => {
+    if (props.isLoading) {
+      return <ButtonLoading />;
+    } else {
+      return props.formHeader === "Create a Memory"
+        ? "Create a Memory"
+        : "Update A Memory";
+    }
+  };
+
   return (
     <div className="form-container">
       <h2 className="form-header">{props.formHeader}</h2>
       <form className="form" onSubmit={handleFormSubmit}>
         {renderInputs}
         <div className="submit-wrapper">
-          <button className="btn primary">
-            {formState["title"] ? "Update Memory" : "Create a Memory"}
-          </button>
+          <button className="btn primary">{renderButtonText()}</button>
         </div>
       </form>
     </div>

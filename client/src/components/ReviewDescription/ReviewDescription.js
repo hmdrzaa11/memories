@@ -43,6 +43,7 @@ export default function ReviewDescription(props) {
     <div className={classes.wrapper}>
       <div className={classes.detail}>
         <h2 className={classes.header}>{title}</h2>
+        <h4 className={classes.descriptionHeader}>Description : </h4>
         <p className={classes.description}>{description}</p>
       </div>
       <div className={classes.formWrapper}>
@@ -52,10 +53,14 @@ export default function ReviewDescription(props) {
           ""
         )}
       </div>
-      <div className={classes.comments}>
-        {renderReviews()}
-        <div ref={scrollDiv}></div>
-      </div>
+      {reviews && reviews.length ? (
+        <div className={classes.comments}>
+          {renderReviews()}
+          <div ref={scrollDiv}></div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

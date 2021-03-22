@@ -31,7 +31,7 @@ let Signup = (props) => {
   let onFormSubmit = (formData) => {
     dispatch(actionCreators.signupAction(formData, props.history));
   };
-  let { error } = useSelector((state) => state.auth);
+  let { error, loading } = useSelector((state) => state.auth);
   let onErrorClose = () => {
     dispatch(actionCreators.resetAllErrors());
   };
@@ -43,7 +43,12 @@ let Signup = (props) => {
   return (
     <div>
       {renderErrors()}
-      <Form formHeader="Sign up" onFormSubmit={onFormSubmit} fields={FIELDS} />
+      <Form
+        formHeader="Sign up"
+        onFormSubmit={onFormSubmit}
+        fields={FIELDS}
+        isLoading={loading}
+      />
     </div>
   );
 };

@@ -26,7 +26,7 @@ export default function CreateMemory(props) {
     dispatch(actionCreators.createMemory(formData, props.history));
   };
 
-  let { error } = useSelector((state) => state.memories);
+  let { error, loading } = useSelector((state) => state.memories);
 
   let onModalClose = () => {
     dispatch(actionCreators.resetAllErrors());
@@ -45,6 +45,7 @@ export default function CreateMemory(props) {
         fields={FIELDS}
         formHeader="Create a Memory"
         onFormSubmit={handleFormSubmit}
+        isLoading={loading}
       />
     </div>
   );

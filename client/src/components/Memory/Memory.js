@@ -69,7 +69,7 @@ let Memory = (props) => {
         <div className={classes.description}>{description}</div>
         <div className={classes.cta}>
           <Link to={`review/${_id}`} className="btn primary">
-            Review
+            More
           </Link>
           {isMyMemory ? (
             <button onClick={handleDelete} className="btn btn danger">

@@ -1,5 +1,4 @@
 .Memory {
-  min-height: 50rem;
   background-color: #dadada;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -75,10 +74,12 @@
   margin-top: 3rem;
   font-weight: 500;
   line-height: 2;
+  min-height: 5rem;
 }
 
 .cta {
   margin-top: 4rem;
+  margin-bottom: 4rem;
   display: flex;
   justify-content: center;
 }
@@ -96,4 +97,5 @@
   position: absolute;
   bottom: 0.5rem;
   right: 1rem;
+  margin-top: 2rem;
 }
