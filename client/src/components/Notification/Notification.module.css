@@ -9,6 +9,7 @@
   z-index: 3;
 }
 .messageBox {
+  min-width: 30rem;
 }
 .header {
   text-align: center;
@@ -19,4 +20,6 @@
   font-size: 1.5rem;
   padding: 1rem;
   color: white;
+  text-transform: capitalize;
+  text-align: center;
 }

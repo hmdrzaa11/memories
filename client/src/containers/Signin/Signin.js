@@ -1,6 +1,7 @@
 import Form from "../../components/Forms/SignupForm/SignupForm";
 import { actionCreators } from "../../state";
 import { useDispatch, useSelector } from "react-redux";
+import Notification from "../../components/Notification/Notification";
 
 const FIELDS = [
   {
@@ -18,13 +19,17 @@ const FIELDS = [
 let Signin = (props) => {
   let dispatch = useDispatch();
   let { error } = useSelector((state) => state.auth);
-  //TODO create a Notification for showing Errors
   let onFormSubmit = (formData) => {
     dispatch(actionCreators.signinAction(formData, props.history));
   };
+
+  let onModalClose = () => {
+    dispatch(actionCreators.resetAllErrors());
+  };
+
   let renderErrors = () => {
     if (error) {
-      return <h2>{error}</h2>;
+      return <Notification message={error} onModalClose={onModalClose} />;
     }
   };
   return (

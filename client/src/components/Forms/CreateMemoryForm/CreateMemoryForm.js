@@ -77,7 +77,9 @@ export default function CreateMemoryForm(props) {
       <form className="form" onSubmit={handleFormSubmit}>
         {renderInputs}
         <div className="submit-wrapper">
-          <button className="btn primary">Create Post</button>
+          <button className="btn primary">
+            {formState["title"] ? "Update Memory" : "Create a Memory"}
+          </button>
         </div>
       </form>
     </div>

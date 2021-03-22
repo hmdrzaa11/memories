@@ -1,6 +1,7 @@
 import Form from "../../components/Forms/CreateMemoryForm/CreateMemoryForm";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actionCreators } from "../../state";
+import Notification from "../../components/Notification/Notification";
 
 const FIELDS = [
   {
@@ -25,8 +26,21 @@ export default function CreateMemory(props) {
     dispatch(actionCreators.createMemory(formData, props.history));
   };
 
+  let { error } = useSelector((state) => state.memories);
+
+  let onModalClose = () => {
+    dispatch(actionCreators.resetAllErrors());
+  };
+
+  let renderError = () => {
+    if (error) {
+      return <Notification message={error} onModalClose={onModalClose} />;
+    }
+  };
+
   return (
     <div>
+      {renderError()}
       <Form
         fields={FIELDS}
         formHeader="Create a Memory"

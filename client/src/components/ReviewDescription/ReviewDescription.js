@@ -46,7 +46,11 @@ export default function ReviewDescription(props) {
         <p className={classes.description}>{description}</p>
       </div>
       <div className={classes.formWrapper}>
-        <ReviewForm handleFormSubmit={handleFormSubmit} noCancel />
+        {user ? (
+          <ReviewForm handleFormSubmit={handleFormSubmit} noCancel />
+        ) : (
+          ""
+        )}
       </div>
       <div className={classes.comments}>
         {renderReviews()}
