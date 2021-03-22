@@ -80,16 +80,20 @@
 .cta {
   margin-top: 4rem;
   display: flex;
+  justify-content: center;
+}
+.cta button {
+  margin: 0 2rem;
 }
 
-.date{
+.date {
   color: white;
   font-size: 1rem;
   font-weight: 500;
 }
 
-.stars{
+.stars {
   position: absolute;
-  bottom: .5rem;
+  bottom: 0.5rem;
   right: 1rem;
 }

@@ -38,6 +38,14 @@
 .fileInput {
   display: none;
 }
+.fileErr {
+  display: none;
+}
+.fileInput:invalid ~ .fileErr {
+  color: red;
+  display: block;
+  font-size: 1.4rem;
+}
 
 .fileLabel {
   font-size: 1.3rem;

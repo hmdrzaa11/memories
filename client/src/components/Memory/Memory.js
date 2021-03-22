@@ -1,7 +1,8 @@
 import classes from "./Memory.module.css";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { actionCreators } from "../../state";
 
 let Memory = (props) => {
   let {
@@ -14,7 +15,13 @@ let Memory = (props) => {
     title,
   } = props.memory;
   let { user } = useSelector((state) => state.auth);
-  let isMineMemory = user && owner === user._id;
+  let isMyMemory = user && owner === user._id;
+  let dispatch = useDispatch();
+
+  let handleDelete = () => {
+    dispatch(actionCreators.deleteMemory(_id));
+  };
+
   let renderStars = () => {
     let fullStars = Math.floor(ratingsAvg);
     let stars = [];
@@ -51,7 +58,7 @@ let Memory = (props) => {
           <div className={classes.date}>{moment(createdAt).fromNow()}</div>
         </div>
         <Link to={`/edit/${_id}`} className={classes.updateBtn}>
-          {isMineMemory ? (
+          {isMyMemory ? (
             <i className={`${classes.white} fas fa-ellipsis-h`}></i>
           ) : (
             ""
@@ -61,9 +68,16 @@ let Memory = (props) => {
       <div className={classes.bottom}>
         <div className={classes.description}>{description}</div>
         <div className={classes.cta}>
-          <Link to={`review/${_id}`} className="btn danger">
+          <Link to={`review/${_id}`} className="btn primary">
             Review
           </Link>
+          {isMyMemory ? (
+            <button onClick={handleDelete} className="btn btn danger">
+              Delete
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className={classes.stars}>{renderStars()}</div>

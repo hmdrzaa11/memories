@@ -5,10 +5,22 @@ let Input = ({ type, label, imageSrc, ...resetProps }) => {
     switch (type) {
       case "password":
         return (
-          <input type="password" {...resetProps} className={classes.input} />
+          <input
+            type="password"
+            {...resetProps}
+            className={classes.input}
+            required
+          />
         );
       case "email":
-        return <input type="email" {...resetProps} className={classes.input} />;
+        return (
+          <input
+            type="email"
+            {...resetProps}
+            className={classes.input}
+            required
+          />
+        );
       case "file":
         return (
           <div className={classes.fileWrapper}>
@@ -17,10 +29,13 @@ let Input = ({ type, label, imageSrc, ...resetProps }) => {
               {...resetProps}
               className={classes.fileInput}
               id="file"
+              required={imageSrc ? false : true}
             />
             <label className={classes.fileLabel} htmlFor="file">
               Select an image
             </label>
+            <p className={classes.fileErr}>Please Select an Image</p>
+
             <div>
               {imageSrc ? (
                 <img
@@ -41,6 +56,7 @@ let Input = ({ type, label, imageSrc, ...resetProps }) => {
             {...resetProps}
             onChange={resetProps.onChange}
             className={classes.input}
+            required
           />
         );
     }

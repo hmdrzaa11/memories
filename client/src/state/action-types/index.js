@@ -25,6 +25,9 @@ export let CREATE_REVIEW_FAILED = "CREATE_REVIEW_FAILED";
 
 export let RESET_ERRORS = "RESET_ERRORS";
 
+export let DELETE_MEMORY = "DELETE_MEMORY";
+export let DELETE_MEMORY_SUCCESS = "DELETE_MEMORY_SUCCESS";
+
 //***************** AUTH ************************* */
 
 export let SIGN_UP = "SIGN_UP";

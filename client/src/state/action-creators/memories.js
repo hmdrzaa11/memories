@@ -108,3 +108,12 @@ export let createReview = (memId, formData) => async (dispatch) => {
 export let resetAllErrors = () => (dispatch) => {
   dispatch({ type: actionTypes.RESET_ERRORS });
 };
+
+export let deleteMemory = (memId) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/v1/memories/${memId}`);
+    await dispatch(fetchAllMemories());
+  } catch (error) {
+    console.log(error);
+  }
+};
