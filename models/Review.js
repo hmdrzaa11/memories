@@ -12,6 +12,7 @@ let reviewSchema = new Schema({
     type: Number,
     default: 4.5,
     min: [0, "rating can not be below 0"],
+    max: [5, "rating can not be above 5"],
   },
 
   reviewer: {

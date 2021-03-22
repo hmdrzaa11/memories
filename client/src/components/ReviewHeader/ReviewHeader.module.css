@@ -1,5 +1,5 @@
 .wrapper {
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,7 +8,7 @@
 }
 
 .imageWrapper {
-  width: 100%;
+  width: 90%;
   height: 60rem;
   position: relative;
   display: flex;
@@ -16,12 +16,14 @@
   align-items: center;
   border-radius: 5px;
   overflow: hidden;
-  object-fit: contain;
+  object-fit: cover;
+  box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.3);
 }
 
 .image {
   display: block;
   position: relative;
+  width: 100%;
 }
 
 .overlay {

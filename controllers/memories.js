@@ -31,7 +31,7 @@ exports.resizeImage = catchAsyncErrors(async (req, res, next) => {
   req.file.filename = filename;
   let filePath = path.join(__dirname, `../public/images/memories/${filename}`);
   await sharp(req.file.buffer)
-    .resize(1200, 1024)
+    .resize(1200, 600)
     .toFormat("jpeg")
     .jpeg({ quality: 90 })
     .toFile(filePath);
