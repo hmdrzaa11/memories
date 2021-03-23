@@ -33,6 +33,7 @@
   height: 5rem;
   border-radius: 50%;
   margin-right: 0.2rem;
+  object-fit: cover;
 }
 
 .fileInput {
@@ -44,7 +45,8 @@
 .fileInput:invalid ~ .fileErr {
   color: red;
   display: block;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .fileLabel {
@@ -63,4 +65,29 @@
   background-color: black;
   color: white;
   border-radius: 0.6rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .input::placeholder {
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+  }
+  .fileInput:invalid ~ .fileErr {
+    color: red;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .fileLabel {
+    font-size: 1.6rem;
+    display: block;
+    border-bottom: 1px solid darkslateblue;
+    cursor: pointer;
+    margin-right: auto;
+    text-transform: capitalize;
+    padding: 1rem 0.2rem;
+    border-radius: 0.6rem 0.6rem 0 0;
+    transition: all 0.5s;
+  }
 }

@@ -20,12 +20,13 @@ export default function ReviewForm({
     }));
   };
 
-  let handleFromSubmit = () => {
+  let onFormSubmit = (e) => {
+    e.preventDefault();
     handleFormSubmit(formState);
     setFormState({ rating: "", review: "" });
   };
   return (
-    <form>
+    <form onSubmit={onFormSubmit}>
       <div className={classes.inputWrapper}>
         <input
           className={classes.reviewInput}
@@ -34,6 +35,7 @@ export default function ReviewForm({
           onChange={handleInputChange}
           name="review"
           placeholder="Your Review..."
+          required
         />
         <input
           className={classes.ratingInput}
@@ -45,13 +47,18 @@ export default function ReviewForm({
           name="rating"
           placeholder="Rating..."
           step="any"
+          required
         />
       </div>
 
       <div className={classes.action}>
-        <i className="fas fa-edit" onClick={handleFromSubmit}></i>
+        <button>
+          <i className="fas fa-edit"></i>
+        </button>
         {!noCancel ? (
-          <i onClick={onCancelClick} className="fas fa-times"></i>
+          <button>
+            <i onClick={onCancelClick} className="fas fa-times"></i>
+          </button>
         ) : (
           ""
         )}

@@ -60,7 +60,7 @@ export default function Comment({
       <h4 className={classes.author}>{author}</h4>
       <div
         className={classes.details}
-        style={{ marginBottom: isUpdateMode ? 0 : "2rem" }}
+        // style={{ marginBottom: isUpdateMode ? 0 : "2rem" }}
       >
         {renderContent()}
       </div>

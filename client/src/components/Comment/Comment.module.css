@@ -35,3 +35,30 @@
 .action button {
   margin: 0 1rem;
 }
+
+@media only screen and (max-width: 1000px) {
+  .wrapper {
+    padding: 0.5rem 1rem;
+  }
+  .author {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  .details {
+    margin-bottom: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .rating {
+    display: block;
+  }
+  .review {
+    margin: 1rem 2rem;
+  }
+  .action {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+}

@@ -14,15 +14,21 @@ let Review = (props) => {
   useEffect(() => {
     dispatch(fetchSingleMemory(memId));
   }, [dispatch, fetchSingleMemory, memId]);
+
   let onModalClose = () => {
-    dispatch(actionCreators.resetAllErrors);
+    dispatch(actionCreators.resetAllErrors());
   };
   let memory = memories.find((mem) => mem._id === memId);
+
   let renderError = () => {
     if (error) {
-      return <Notification message={error} onModalClose={onModalClose} />;
+      let result = error.toLowerCase().includes("already exists")
+        ? "You Already Reviewed This Memory"
+        : error;
+      return <Notification message={result} onModalClose={onModalClose} />;
     }
   };
+
   let renderReview = () => {
     if (memory) {
       return (

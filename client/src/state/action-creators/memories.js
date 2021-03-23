@@ -99,7 +99,7 @@ export let createReview = (memId, formData) => async (dispatch) => {
     await dispatch(fetchSingleMemory(memId));
   } catch (error) {
     dispatch({
-      type: actionTypes,
+      type: actionTypes.CREATE_REVIEW_FAILED,
       payload: error.response.data.message,
     });
   }
