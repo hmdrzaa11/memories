@@ -32,6 +32,13 @@ app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/memories", memoriesRouter);
 app.use("/api/v1/reviews", reviewsRouter);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client", "build")));
+  app.get("*", (req, res, next) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
+
 //404 routes
 app.all("*", (req, res, next) => {
   let message = `path ${req.originalUrl} not exist`;
@@ -40,12 +47,5 @@ app.all("*", (req, res, next) => {
 
 //global error handler
 app.use(errorHandler);
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client", "build")));
-  app.get("*", (req, res, next) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-  });
-}
 
 module.exports = app;
