@@ -1,6 +1,6 @@
 let express = require("express");
 require("dotenv").config({ path: `${__dirname}/.env` });
-let morgan = require("morgan");
+
 let errorHandler = require("./controllers/errors");
 let cookieParser = require("cookie-parser");
 let usersRouter = require("./routes/users");
@@ -15,6 +15,7 @@ let app = express();
 app.enable("trust proxy");
 
 if (process.env.NODE_ENV === "development") {
+  let morgan = require("morgan");
   app.use(morgan("dev"));
 }
 
