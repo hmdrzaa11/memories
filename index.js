@@ -7,6 +7,7 @@ let usersRouter = require("./routes/users");
 let memoriesRouter = require("./routes/memories");
 let reviewsRouter = require("./routes/reviews");
 const AppError = require("./utils/AppError");
+let path = require("path");
 
 let app = express();
 
@@ -38,5 +39,12 @@ app.all("*", (req, res, next) => {
 
 //global error handler
 app.use(errorHandler);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client", "build")));
+  app.get("*", (req, res, next) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
 
 module.exports = app;
