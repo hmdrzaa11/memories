@@ -25,6 +25,7 @@
 .action {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .rating {
@@ -45,7 +46,7 @@
     font-weight: 300;
   }
   .details {
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.7rem;
   }
 }
 
@@ -55,10 +56,5 @@
   }
   .review {
     margin: 1rem 2rem;
-  }
-  .action {
-    display: flex;
-    align-items: center;
-    flex-direction: column-reverse;
   }
 }

@@ -65,7 +65,7 @@ export default function Comment({
         {renderContent()}
       </div>
       {isMine ? (
-        <div className={classes.action}>
+        <div>
           {!isUpdateMode ? (
             <div className={classes.action}>
               <i
