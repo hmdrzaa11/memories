@@ -95,8 +95,10 @@ export let deleteReview = (memId, reviewId) => async (dispatch) => {
 
 export let createReview = (memId, formData) => async (dispatch) => {
   try {
+    dispatch({ type: actionTypes.CREATE_REVIEW });
     await axios.post(`/api/v1/memories/${memId}/reviews`, formData);
     await dispatch(fetchSingleMemory(memId));
+    dispatch({ type: actionTypes.CREATE_REVIEW_SUCCESS });
   } catch (error) {
     dispatch({
       type: actionTypes.CREATE_REVIEW_FAILED,

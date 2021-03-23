@@ -4,6 +4,9 @@ const INITIAL_STATE = {
   loading: false,
   memories: [],
   error: "",
+  createReviewLoading: false,
+  deleteReviewLoading: false,
+  updateReviewLoading: false,
 };
 
 let memoriesReducer = (state = INITIAL_STATE, action) => {
@@ -78,15 +81,22 @@ let memoriesReducer = (state = INITIAL_STATE, action) => {
     case actionTypes.CREATE_REVIEW:
       return {
         ...state,
-        loading: true,
+        createReviewLoading: true,
+        error: null,
+      };
+    case actionTypes.CREATE_REVIEW_SUCCESS:
+      return {
+        ...state,
+        createReviewLoading: false,
         error: null,
       };
     case actionTypes.CREATE_REVIEW_FAILED:
       return {
         ...state,
-        loading: false,
+        createReviewLoading: false,
         error: action.payload,
       };
+
     case actionTypes.RESET_ERRORS:
       return {
         ...state,

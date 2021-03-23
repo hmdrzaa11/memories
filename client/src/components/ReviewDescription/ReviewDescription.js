@@ -9,6 +9,8 @@ import { useEffect, useRef } from "react";
 export default function ReviewDescription(props) {
   let { title, description, reviews, _id } = props.memory;
   let { user } = useSelector((state) => state.auth);
+  let { loading } = useSelector((state) => state.memories);
+
   let scrollDiv = useRef(null);
 
   let dispatch = useDispatch();
@@ -48,7 +50,11 @@ export default function ReviewDescription(props) {
       </div>
       <div className={classes.formWrapper}>
         {user ? (
-          <ReviewForm handleFormSubmit={handleFormSubmit} noCancel />
+          <ReviewForm
+            handleFormSubmit={handleFormSubmit}
+            noCancel
+            isLoading={loading}
+          />
         ) : (
           ""
         )}

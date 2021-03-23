@@ -1,11 +1,14 @@
 import { useState } from "react";
 import classes from "./ReviewForm.module.css";
+import ButtonLoading from "../../ButtonLoading/ButtonLoading";
+
 export default function ReviewForm({
   review,
   rating,
   onCancelClick,
   handleFormSubmit,
   noCancel,
+  isLoading,
 }) {
   let [formState, setFormState] = useState(() => {
     return {
@@ -53,7 +56,7 @@ export default function ReviewForm({
 
       <div className={classes.action}>
         <button>
-          <i className="fas fa-edit"></i>
+          {isLoading ? <ButtonLoading /> : <i className="fas fa-edit"></i>}
         </button>
         {!noCancel ? (
           <button>
