@@ -75,6 +75,13 @@
   font-weight: 500;
   line-height: 2;
   min-height: 5rem;
+  max-height: 10rem;
+  overflow-y: scroll;
+}
+
+.description::-webkit-scrollbar {
+  width: 3px;
+  background-color: transparent;
 }
 
 .cta {

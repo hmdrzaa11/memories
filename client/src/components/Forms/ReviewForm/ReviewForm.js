@@ -10,9 +10,7 @@ export default function ReviewForm({
   handleFormSubmit,
   noCancel,
   isLoading,
-  isDeleting,
 }) {
-  let { deleteReviewLoading } = useSelector((state) => state.memories);
   let [formState, setFormState] = useState(() => {
     return {
       review: review || "",
@@ -48,7 +46,7 @@ export default function ReviewForm({
           className={classes.ratingInput}
           type="number"
           value={formState.rating}
-          min={4}
+          min={0}
           max={5}
           onChange={handleInputChange}
           name="rating"
@@ -64,11 +62,7 @@ export default function ReviewForm({
         </button>
         {!noCancel ? (
           <button>
-            {deleteReviewLoading ? (
-              <ButtonLoading />
-            ) : (
-              <i onClick={onCancelClick} className="fas fa-times"></i>
-            )}
+            <i onClick={onCancelClick} className="fas fa-times"></i>
           </button>
         ) : (
           ""
