@@ -67,11 +67,13 @@ export let updateReview = (memId, reviewId, formData, callback) => async (
   dispatch
 ) => {
   try {
+    dispatch({ type: actionTypes.UPDATE_REVIEW });
     await axios.patch(
       `/api/v1/memories/${memId}/reviews/${reviewId}`,
       formData
     );
     await dispatch(fetchSingleMemory(memId));
+    dispatch({ type: actionTypes.UPDATE_REVIEW_SUCCESS });
     callback();
   } catch (error) {
     dispatch({
@@ -83,8 +85,10 @@ export let updateReview = (memId, reviewId, formData, callback) => async (
 
 export let deleteReview = (memId, reviewId) => async (dispatch) => {
   try {
+    dispatch({ type: actionTypes.DELETE_REVIEW });
     await axios.delete(`/api/v1/memories/${memId}/reviews/${reviewId}`);
     await dispatch(fetchSingleMemory(memId));
+    dispatch({ type: actionTypes.DELETE_REVIEW_SUCCESS });
   } catch (error) {
     dispatch({
       type: actionTypes.DELETE_REVIEW_FAILED,

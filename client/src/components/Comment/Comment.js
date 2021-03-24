@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReviewForm from "../Forms/ReviewForm/ReviewForm";
 import classes from "./Comment.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actionCreators } from "../../state";
 
 export default function Comment({
@@ -14,7 +14,9 @@ export default function Comment({
   reviewId,
 }) {
   let [isUpdateMode, setUpdateMode] = useState(false);
-
+  let { updateReviewLoading, deleteReviewLoading } = useSelector(
+    (state) => state.memories
+  );
   let isMine = false;
   if (userId && userId === authorId) isMine = true;
   let dispatch = useDispatch();
@@ -43,6 +45,8 @@ export default function Comment({
           rating={rating}
           onCancelClick={handleCancel}
           handleFormSubmit={handleFormSubmit}
+          isLoading={updateReviewLoading}
+          isDeleting={deleteReviewLoading}
         />
       );
     } else {

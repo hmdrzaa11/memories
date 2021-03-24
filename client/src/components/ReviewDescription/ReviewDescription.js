@@ -9,7 +9,7 @@ import { useEffect, useRef } from "react";
 export default function ReviewDescription(props) {
   let { title, description, reviews, _id } = props.memory;
   let { user } = useSelector((state) => state.auth);
-  let { loading } = useSelector((state) => state.memories);
+  let { createReviewLoading } = useSelector((state) => state.memories);
 
   let scrollDiv = useRef(null);
 
@@ -53,7 +53,7 @@ export default function ReviewDescription(props) {
           <ReviewForm
             handleFormSubmit={handleFormSubmit}
             noCancel
-            isLoading={loading}
+            isLoading={createReviewLoading}
           />
         ) : (
           ""

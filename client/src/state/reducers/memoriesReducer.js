@@ -97,6 +97,38 @@ let memoriesReducer = (state = INITIAL_STATE, action) => {
         error: action.payload,
       };
 
+    case actionTypes.DELETE_REVIEW:
+      return {
+        ...state,
+        deleteReviewLoading: true,
+        error: null,
+      };
+    case actionTypes.DELETE_REVIEW_SUCCESS:
+      return {
+        ...state,
+        deleteReviewLoading: false,
+        error: null,
+      };
+
+    case actionTypes.UPDATE_REVIEW:
+      return {
+        ...state,
+        updateReviewLoading: true,
+        error: null,
+      };
+    case actionTypes.UPDATE_REVIEW_SUCCESS:
+      return {
+        ...state,
+        updateReviewLoading: false,
+        error: null,
+      };
+    case actionTypes.UPDATE_REVIEW_FAILED:
+      return {
+        ...state,
+        updateReviewLoading: false,
+        error: action.payload,
+      };
+
     case actionTypes.RESET_ERRORS:
       return {
         ...state,

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import classes from "./ReviewForm.module.css";
 import ButtonLoading from "../../ButtonLoading/ButtonLoading";
+import { useSelector } from "react-redux";
 
 export default function ReviewForm({
   review,
@@ -9,7 +10,9 @@ export default function ReviewForm({
   handleFormSubmit,
   noCancel,
   isLoading,
+  isDeleting,
 }) {
+  let { deleteReviewLoading } = useSelector((state) => state.memories);
   let [formState, setFormState] = useState(() => {
     return {
       review: review || "",
@@ -28,6 +31,7 @@ export default function ReviewForm({
     handleFormSubmit(formState);
     setFormState({ rating: "", review: "" });
   };
+
   return (
     <form onSubmit={onFormSubmit}>
       <div className={classes.inputWrapper}>
@@ -60,7 +64,11 @@ export default function ReviewForm({
         </button>
         {!noCancel ? (
           <button>
-            <i onClick={onCancelClick} className="fas fa-times"></i>
+            {deleteReviewLoading ? (
+              <ButtonLoading />
+            ) : (
+              <i onClick={onCancelClick} className="fas fa-times"></i>
+            )}
           </button>
         ) : (
           ""
