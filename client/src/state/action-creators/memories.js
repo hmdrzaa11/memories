@@ -63,9 +63,13 @@ export let updateMemory = (formData, memId, history) => async (dispatch) => {
   }
 };
 
-export let updateReview = (memId, reviewId, formData, callback) => async (
-  dispatch
-) => {
+export let updateReview = (
+  memId,
+  reviewId,
+  formData,
+  callback,
+  resetFields
+) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.UPDATE_REVIEW });
     await axios.patch(
@@ -74,6 +78,7 @@ export let updateReview = (memId, reviewId, formData, callback) => async (
     );
     await dispatch(fetchSingleMemory(memId));
     dispatch({ type: actionTypes.UPDATE_REVIEW_SUCCESS });
+    resetFields();
     callback();
   } catch (error) {
     dispatch({

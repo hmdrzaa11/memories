@@ -25,10 +25,16 @@ export default function Comment({
     setUpdateMode((pre) => !pre);
   };
 
-  let handleFormSubmit = (formData) => {
+  let handleFormSubmit = (formData, resetFields) => {
     if (isUpdateMode) {
       dispatch(
-        actionCreators.updateReview(memId, reviewId, formData, handleCancel)
+        actionCreators.updateReview(
+          memId,
+          reviewId,
+          formData,
+          handleCancel,
+          resetFields
+        )
       );
     }
   };

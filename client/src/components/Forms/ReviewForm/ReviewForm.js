@@ -24,10 +24,13 @@ export default function ReviewForm({
     }));
   };
 
+  let resetFields = () => {
+    setFormState({ rating: "", review: "" });
+  };
+
   let onFormSubmit = (e) => {
     e.preventDefault();
-    handleFormSubmit(formState);
-    setFormState({ rating: "", review: "" });
+    handleFormSubmit(formState, resetFields);
   };
 
   return (
